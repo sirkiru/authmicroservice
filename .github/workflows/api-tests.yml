@@ -53,7 +53,7 @@ jobs:
         run: mvn package -DskipTests
 
       - name: Upload JAR artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: auth-microservice-jar
           path: target/*.jar
@@ -74,7 +74,7 @@ jobs:
       - name: Checkout auth microservice
         uses: actions/checkout@v4
 
-      - name: Checkout contract tests
+      - name: Checkout contract tests repository
         uses: actions/checkout@v4
         with:
           repository: sirkiru/auth-service-contract-tests
@@ -99,8 +99,7 @@ jobs:
           mvn clean test -Dbase.url=http://localhost:8080
 
       - name: Upload ExtentReports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: extent-report
-          path: |
-            contract-tests/test-output/ExtentReport.html
+          path: contract-tests/test-output/ExtentReport.html
