@@ -72,9 +72,13 @@ public class WebSecurityConfig {
                                 "/api/clients/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
+                                "/actuator/health",
+                                "/actuator/info",
                                 "/swagger-ui.html")
                         .permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll()
+                // .anyRequest().authenticated()
+                )
                 .logout(logout -> logout
                         .logoutUrl("/api/auth/logout")
                         .logoutSuccessHandler((request, response, authentication) -> {
