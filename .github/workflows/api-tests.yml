@@ -1,6 +1,7 @@
 name: API Tests Workflow
 
 on:
+  workflow_dispatch:    # <-- Allows manual runs from GitHub web
   push:
     branches:
       - main
